@@ -9,9 +9,9 @@ Visualize forward and deferred rendering within different scenes. Comments have 
 
 Basic structure of the project:
 - src: contains source code
-	geometry: rendering of teapot and torus (David Wolf)
-	objectModel: handling of models, in this case backpack model (Joey de Vries)
-	vendors: ImGui (used to get user input), glm (math libary), stb_image (loading of textures)
+	- geometry: rendering of teapot and torus (David Wolf)
+	- objectModel: handling of models, in this case backpack model (Joey de Vries)
+	- vendors: ImGui (used to get user input), glm (math libary), stb_image (loading of textures)
 - dependencies: external libaries / headers (ASSIMP, GLAD, GLFW)
 - dlls: dynamic libaries (assimp: .dll file is copied to outDir by postprocess comand in visual studio)
 - resources: shaders and models (objects like backpack)
