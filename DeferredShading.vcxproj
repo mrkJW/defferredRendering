@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{f944bf5e-2908-461f-864a-725525722ba1}</ProjectGuid>
+    <RootNamespace>DeferredShading</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\ASSIMP\include;$(SolutionDir)dependencies\GLFW\include;$(SolutionDir)dependencies\GLAD\include;$(SolutionDir)src\vendors</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\ASSIMP\include;$(SolutionDir)dependencies\GLFW\include;$(SolutionDir)dependencies\GLAD\include;$(SolutionDir)src\vendors</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\ASSIMP\include;$(SolutionDir)dependencies\GLFW\include;$(SolutionDir)dependencies\GLAD\include;$(SolutionDir)src\vendors</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)dependencies\ASSIMP\include;$(SolutionDir)dependencies\GLFW\include;$(SolutionDir)dependencies\GLAD\include;$(SolutionDir)src\vendors</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="dependencies\GLAD\src\glad.c" />
+    <ClCompile Include="src\geometry\plane.cpp" />
+    <ClCompile Include="src\geometry\teapot.cpp" />
+    <ClCompile Include="src\geometry\torus.cpp" />
+    <ClCompile Include="src\geometry\trianglemesh.cpp" />
+    <ClCompile Include="src\geometry\glslprogram.cpp" />
+    <ClCompile Include="src\geometry\glutils.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\objectModel\model.cpp" />
+    <ClCompile Include="src\scenecombined.cpp" />
+    <ClCompile Include="src\scenedeferred.cpp" />
+    <ClCompile Include="src\sceneforward.cpp" />
+    <ClCompile Include="src\scenegbuffer.cpp" />
+    <ClCompile Include="src\sceneoverlap.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\vendors\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\vendors\stb_image\stb_image.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\geometry\drawable.h" />
+    <ClInclude Include="src\geometry\plane.h" />
+    <ClInclude Include="src\geometry\teapot.h" />
+    <ClInclude Include="src\geometry\teapotdata.h" />
+    <ClInclude Include="src\geometry\torus.h" />
+    <ClInclude Include="src\geometry\trianglemesh.h" />
+    <ClInclude Include="src\geometry\glslprogram.h" />
+    <ClInclude Include="src\geometry\glutils.h" />
+    <ClInclude Include="src\models\Compiler\poppack1.h" />
+    <ClInclude Include="src\models\Compiler\pstdint.h" />
+    <ClInclude Include="src\models\Compiler\pushpack1.h" />
+    <ClInclude Include="src\models\port\AndroidJNI\AndroidJNIIOSystem.h" />
+    <ClInclude Include="src\objectModel\camera.h" />
+    <ClInclude Include="src\objectModel\filesystem.h" />
+    <ClInclude Include="src\objectModel\mesh.h" />
+    <ClInclude Include="src\objectModel\model.h" />
+    <ClInclude Include="src\objectModel\shader.h" />
+    <ClInclude Include="src\scene.h" />
+    <ClInclude Include="src\scenecombined.h" />
+    <ClInclude Include="src\scenedeferred.h" />
+    <ClInclude Include="src\sceneforward.h" />
+    <ClInclude Include="src\scenegbuffer.h" />
+    <ClInclude Include="src\sceneoverlap.h" />
+    <ClInclude Include="src\scenerunner.h" />
+    <ClInclude Include="src\vendors\glm\common.hpp" />
+    <ClInclude Include="src\vendors\glm\exponential.hpp" />
+    <ClInclude Include="src\vendors\glm\ext.hpp" />
+    <ClInclude Include="src\vendors\glm\fwd.hpp" />
+    <ClInclude Include="src\vendors\glm\geometric.hpp" />
+    <ClInclude Include="src\vendors\glm\glm.hpp" />
+    <ClInclude Include="src\vendors\glm\integer.hpp" />
+    <ClInclude Include="src\vendors\glm\mat2x2.hpp" />
+    <ClInclude Include="src\vendors\glm\mat2x3.hpp" />
+    <ClInclude Include="src\vendors\glm\mat2x4.hpp" />
+    <ClInclude Include="src\vendors\glm\mat3x2.hpp" />
+    <ClInclude Include="src\vendors\glm\mat3x3.hpp" />
+    <ClInclude Include="src\vendors\glm\mat3x4.hpp" />
+    <ClInclude Include="src\vendors\glm\mat4x2.hpp" />
+    <ClInclude Include="src\vendors\glm\mat4x3.hpp" />
+    <ClInclude Include="src\vendors\glm\mat4x4.hpp" />
+    <ClInclude Include="src\vendors\glm\matrix.hpp" />
+    <ClInclude Include="src\vendors\glm\packing.hpp" />
+    <ClInclude Include="src\vendors\glm\trigonometric.hpp" />
+    <ClInclude Include="src\vendors\glm\vec2.hpp" />
+    <ClInclude Include="src\vendors\glm\vec3.hpp" />
+    <ClInclude Include="src\vendors\glm\vec4.hpp" />
+    <ClInclude Include="src\vendors\glm\vector_relational.hpp" />
+    <ClInclude Include="src\vendors\imgui\imconfig.h" />
+    <ClInclude Include="src\vendors\imgui\imgui.h" />
+    <ClInclude Include="src\vendors\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\vendors\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\vendors\imgui\imgui_internal.h" />
+    <ClInclude Include="src\vendors\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\vendors\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\vendors\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\vendors\stb_image\stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\vendors\glm\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dll\assimp-vc140-mt.dll" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

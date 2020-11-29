@@ -1,0 +1,2 @@
+C:/Users/Markus/OneDrive/IN - 1/GrafikShader/Deferred/OpenGL/OpenGL/src/vendor/glm/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
+C:/Users/Markus/OneDrive/IN - 1/GrafikShader/Deferred/OpenGL/OpenGL/src/vendor/glm/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
