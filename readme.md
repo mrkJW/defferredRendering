@@ -22,6 +22,7 @@ Same structures like using pass1() and pass2() have been implemented for both.
 The class scenerunner.h by David Wolf has been 
 
 Notes:
+- in Visual Studio -> Solution Explorer click on "show all files" to see program structure (no filters were used)
 - ImGui is used for an easy way to get and process user input
 - scenerunner.h manages all scenes and provides a button for each scene so the user can start a scene
 - scenerunner.h contains mainLoop of the programm, prints some basic information on top of every scene and issues update() and render() for currently running scene
