@@ -22,13 +22,13 @@ Same structures like using pass1() and pass2() have been implemented for both.
 The class scenerunner.h by David Wolf has been 
 
 Notes:
-[1] ImGui is used for an easy way to get and process user input
-[2] scenerunner.h manages all scenes and provides a button for each scene so the user can start a scene
-[3] scenerunner.h contains mainLoop of the programm, prints some basic information on top of every scene and issues update() and render() for currently running scene
-[4] David Wolf and Joey de Vries have partially very different approaches to implement deferred rendering, while some differences have been kept and can be seen in the code, some unification has been made, example
+- ImGui is used for an easy way to get and process user input
+- scenerunner.h manages all scenes and provides a button for each scene so the user can start a scene
+- scenerunner.h contains mainLoop of the programm, prints some basic information on top of every scene and issues update() and render() for currently running scene
+- David Wolf and Joey de Vries have partially very different approaches to implement deferred rendering, while some differences have been kept and can be seen in the code, some unification has been made, example
 	- handling of shaders sceneoverlap, sceneforward, scenedeferred: direcly in the class of scene
 	- handlung of shaders in scenecombined, scenefguffer: wrapper class around shaders which provides additional level of abstraction
-[5] The following lists states how the scenes are implemented
+- The following lists states how the scenes are implemented
 	- SceneOverlap: deferred
 	- SceneForward: forward
 	- SceneDeferred: deferred
