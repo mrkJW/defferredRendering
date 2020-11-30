@@ -13,7 +13,7 @@ using glm::vec3;
 using glm::mat4;
 
 SceneCombined::SceneCombined() : deltaTime(0.0f), lastFrame(0.0f),
-    shaderGeometryPass(Shader("resources/shaders/SceneCombined/deferredVertexShader.vert.glsl", "resources/shaders/SceneCombined/deferredPass1.frag.glsl")),
+    shaderGeometryPass("resources/shaders/SceneCombined/deferredVertexShader.vert.glsl", "resources/shaders/SceneCombined/deferredPass1.frag.glsl"),
     shaderLightingPass("resources/shaders/SceneCombined/deferredVertexShader2.vert.glsl", "resources/shaders/SceneCombined/deferredPass2.frag.glsl"),
     shaderLightBox("resources/shaders/SceneCombined/lightForwardVertexShader.vert.glsl", "resources/shaders/SceneCombined/lightForwardFragmentShader.frag.glsl"),
     backpack("resources/objects/backpack/backpack.obj"),
@@ -149,13 +149,9 @@ void SceneCombined::forwardLightRender(glm::mat4 projection, glm::mat4 view)
     //if user enabled copyDepthBuffer, the depth buffer of gBuffer is copied to default framebuffer for usage in 
     if (copyDepthBuffer)
     {
-        // 2.5. copy content of geometry's depth buffer to default framebuffer's depth buffer
-        // ----------------------------------------------------------------------------------
         glBindFramebuffer(GL_READ_FRAMEBUFFER, gBuffer);
         glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0); // write to default framebuffer
-        // blit to default framebuffer. Note that this may or may not work as the internal formats of both the FBO and default framebuffer have to match.
-        // the internal formats are implementation defined. This works on all of my systems, but if it doesn't on yours you'll likely have to write to the 		
-        // depth buffer in another shader stage (or somehow see to match the default framebuffer's internal format with the FBO's internal format).
+
         glBlitFramebuffer(0, 0, width, height, 0, 0, width, height, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
@@ -206,25 +202,6 @@ void SceneCombined::render()
     }
 }
 
-/*
-void SceneCombined::render()
-{
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // 1. geometry pass: render scene's geometry/color data into gbuffer
-    pass1();
-    
-    // 2. lighting pass: calculate lighting by iterating over a screen filled quad pixel-by-pixel using the gbuffer's content.
-    pass2();
-
-    //if enabled render lights with forward rendering
-    if (renderLightSources)
-    {
-        forwardLightRender();
-    }
-}
-*/
 void SceneCombined::renderImGui()
 {
     //button for default camera position

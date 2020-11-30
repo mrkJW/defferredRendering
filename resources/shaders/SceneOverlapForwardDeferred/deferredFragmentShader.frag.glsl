@@ -1,25 +1,29 @@
 #version 430
 
+//pass 1 inputs
 in vec3 Position;
 in vec3 Normal;
+//pass 2 inputs
 in vec2 TexCoord;
 
-layout (location = 0) out vec4 FragColor;
+//pass 1 outputs
 layout (location = 1) out vec3 PositionData;
 layout (location = 2) out vec3 NormalData;
 layout (location = 3) out vec3 ColorData;
+//pass 2 output
+layout (location = 0) out vec4 FragColor;
 
-uniform int Pass;   // Pass number
+uniform int Pass;                           // Pass number
 uniform int lightingComplexity;
 
 uniform struct LightInfo {
-  vec4 Position;  // Light position in eye coords.
-  vec3 L;   // D,S intensity
-  vec3 La;  // Ambient
+  vec4 Position;                            // Light position in eye coords.
+  vec3 L;                                   // D,S intensity
+  vec3 La;                                  // Ambient
 } Light ;
 
 uniform struct MaterialInfo {
-  vec3 Kd;            // Diffuse reflectivity
+  vec3 Kd;                                  // Diffuse reflectivity
 } Material;
 
 layout(binding=0) uniform sampler2D PositionTex;

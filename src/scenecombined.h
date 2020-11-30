@@ -25,7 +25,7 @@ private:
     Shader shaderLightingPass;
     Shader shaderLightBox;
 
-    bool renderLightSources;
+    bool renderLightSources;                    //value is set by user via ImGui::button and determines weather lights are rendered or not
     bool copyDepthBuffer;                       //value is set by user via ImGui::button and determines weather depth buffer between deferred and foward is copied or not
 
     //IDs to reference objects/textures/buffers
