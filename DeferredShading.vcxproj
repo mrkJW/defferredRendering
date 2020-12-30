@@ -134,10 +134,11 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;assimp-vc142-mtd.lib;/NODEFAULTLIB:MSVCRT</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)dlls\zlib.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,6 +150,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)dependencies\ASSIMP\include;$(SolutionDir)dependencies\GLFW\include;$(SolutionDir)dependencies\GLAD\include;$(SolutionDir)src\vendors</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,10 +158,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dependencies\ASSIMP\lib;$(SolutionDir)dependencies\GLFW\lib-vc2019</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib; opengl32.lib; User32.lib; Gdi32.lib; Shell32.lib; assimp-vc142-mtd.lib; /NODEFAULTLIB:MSVCRT</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;assimp-vc142-mtd.lib;/NODEFAULTLIB:MSVCRT</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)dlls\assimp-vc142-mtd.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)dlls\zlib.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)resources" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
